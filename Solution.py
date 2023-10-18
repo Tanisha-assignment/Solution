@@ -1,10 +1,10 @@
-# Databricks notebook source
-from pyspark.sql import SparkSession
+
+from pyspark.sql import SparkSession 
 from pyspark.sql.window import Window
 from pyspark.sql.functions import col, min, max, sum
 
 v_path = f'test/sample_test'   #specify folder path to your storage system
-spark = SparkSession.builder.appName("SignalAnalysis").getOrCreate()
+spark = SparkSession.builder.appName("SignalAnalysis").getOrCreate() 
 signals_df = spark.read.option("mergeSchema", "true").parquet(v_path)
 
 signals_df = signals_df.withColumn("month_id", signals_df["month_id"].cast("int"))
